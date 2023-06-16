@@ -1,0 +1,55 @@
+What commands is :- mongosh
+what is commands to open database in cmd : = 
+show dbs 
+What is commands to switch the database 
+use database_name
+crud: - 
+What is commands to insert data in database using cmd 
+db.database_name.insertOne({name:"",type:""})
+What is commands to insert data in database using cmd more then one  
+db.admin.insertMany([{name:"sumesh",type:"react"},{name:"Kapil",type:"node.js"}])
+What is commands to check and find the data in cmd 
+db.database_name.find();
+read the data using cmd 
+admin> db.admin.find({name:"rahul"})
+[
+  {
+    _id: ObjectId("648beb7c1cd018137eeb5837"),
+    name: 'rahul',
+    type: 'full stack'
+  }
+]
+admin> db.admin.find({type:"node.js"})
+
+[
+  {
+    _id: ObjectId("648becb01cd018137eeb5839"),
+    name: 'Kapil',
+    type: 'node.js'
+  }
+]
+how to updates the data using the cmd  :- 
+updateOne=>db.collection_name.updateOne(<filter>,<update>)
+updateMany=>db.collection_name.updateMany(<filter>,<Update>)
+$set=> use to update  the specific value 
+how to delete the data from database using cmd 
+db.database_name.deleteMany({type:""})
+how to delete the all data from database using cmd 
+db.database_name.deleteMany({})
+Mongodb  Query Operatos :- 
+$eq :- equal operators
+$ne :- not equal operators 
+$gt : - value greather then 
+$gte : -  value is less than another 
+$lt : - value is less then another value 
+$lte :- value is lesser thenor not equal to another value 
+$in : - value is matched within and array 
+logicl :- 
+$and :-  return where both queries  
+$or :-  return where either queries  
+$nor :- return both queries fail match 
+$not :-  return where the query not match
+Evalution 
+$regex :-  allow the use of regular expressions 
+$text : - performs a text search 
+$where : - uses a js expressions to match documents 
