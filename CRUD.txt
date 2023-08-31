@@ -53,3 +53,159 @@ Evalution
 $regex :-  allow the use of regular expressions 
 $text : - performs a text search 
 $where : - uses a js expressions to match documents 
+Current Mongosh Log ID: 64f0aef3acef083195ee0162
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.0
+Using MongoDB:          6.0.6
+Using Mongosh:          1.10.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-08-24T19:12:40.405+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+Demo2      8.00 KiB
+SUMESH    44.00 KiB
+admin    112.00 KiB
+config    72.00 KiB
+demo       8.00 KiB
+emplyee   80.00 KiB
+local     80.00 KiB
+myapp      8.00 KiB
+test> use admin
+switched to db admin
+admin> db.admin.find();
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f0205feb57c27d0776a31f"), name: 'anil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") }
+]
+admin> db.admin.insertOne({name:"viral"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64f0b010acef083195ee0163")
+}
+admin>
+
+admin>
+
+admin>
+
+admin> db.admin.insertOne({name:"ketan"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("64f0b043acef083195ee0164")
+}
+admin> db.admin.insertMany([{name:"amit"},{name:"vinay"},{name:"Anilji"}]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("64f0b09bacef083195ee0165"),
+    '1': ObjectId("64f0b09bacef083195ee0166"),
+    '2': ObjectId("64f0b09bacef083195ee0167")
+  }
+}
+admin> db.admin.find();
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f0205feb57c27d0776a31f"), name: 'anil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0165"), name: 'amit' },
+  { _id: ObjectId("64f0b09bacef083195ee0166"), name: 'vinay' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' }
+]
+admin> db.admin.updateOne({name:"Sunil"},{$set:{age:24}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+admin> db.admin.updateOne({name:"anil"},{$set:{type:"student"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+admin> db.admin.insertOne({name:"vinay"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("64f0b2acacef083195ee0168")
+}
+admin> db.admin.updateMany({name:"vinay"},{$Set:{type:"student"}});
+MongoServerError: Unknown modifier: $Set. Expected a valid update modifier or pipeline-style update specified as an array
+admin>  db.admin.updateMany({name:"vinay"},{$set:{type:"student"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+admin> db.admin.updateOne({name:"anil"},{age:23});
+MongoInvalidArgumentError: Update document requires atomic operators
+admin> db.admin.deleteOne({name:"anil"});
+{ acknowledged: true, deletedCount: 1 }
+admin> db.admin.deleteOne({name:"amit"})
+{ acknowledged: true, deletedCount: 1 }
+admin> db.admin.deleteMany({name:"vinay"});
+{ acknowledged: true, deletedCount: 2 }
+admin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
