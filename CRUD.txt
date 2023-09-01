@@ -46,9 +46,12 @@ $lte :- value is lesser thenor not equal to another value
 $in : - value is matched within and array 
 logicl :- 
 $and :-  return where both queries  
+db.database_name.find($and:[{condt1},{cond2}}]};
 $or :-  return where either queries  
 $nor :- return both queries fail match 
+db.admin.find({$nor:[{price:{condt1}},{condt2}]})
 $not :-  return where the query not match
+db.admin.find({$not:[{price:{condt1}},{condt2}]})
 Evalution 
 $regex :-  allow the use of regular expressions 
 $text : - performs a text search 
