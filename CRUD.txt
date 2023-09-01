@@ -44,6 +44,7 @@ $gte : -  value is less than another
 $lt : - value is less then another value 
 $lte :- value is lesser thenor not equal to another value 
 $in : - value is matched within and array 
+nin: - 
 logicl :- 
 $and :-  return where both queries  
 db.database_name.find($and:[{condt1},{cond2}}]};
