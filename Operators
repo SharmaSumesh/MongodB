@@ -1,0 +1,637 @@
+test> show dbs
+Demo2      8.00 KiB
+admin    112.00 KiB
+config    72.00 KiB
+demo       8.00 KiB
+emplyee   80.00 KiB
+local     80.00 KiB
+myapp      8.00 KiB
+sumesh    80.00 KiB
+test> use admin
+switched to db admin
+admin> db.admin.find({price:{$eq:8.75}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({price:{$eq:19.95}});
+
+admin> > db.admin.find({price:{$eq:19.99}});
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | > db.admin.find({price:{$eq:19.99}});
+    | ^
+  2 |
+
+admin>  db.admin.find({price:{$eq:19.99}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  }
+]
+admin>   db.admin.find({price:{$eq:19.99}}).count();
+1
+admin> db.admin.find()
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' },
+  {
+    _id: ObjectId("64f16f73a63c730aa5e2f009"),
+    name: 'rahul',
+    age: 22,
+    type: 'backend role'
+  },
+  {
+    _id: ObjectId("64f17010a63c730aa5e2f00a"),
+    userId: 'ajaysahoo1237Agmail.com',
+    password: '1234'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({price:{$ne:8.75}});
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' },
+  {
+    _id: ObjectId("64f16f73a63c730aa5e2f009"),
+    name: 'rahul',
+    age: 22,
+    type: 'backend role'
+  },
+  {
+    _id: ObjectId("64f17010a63c730aa5e2f00a"),
+    userId: 'ajaysahoo1237Agmail.com',
+    password: '1234'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  }
+]
+admin> db.admin.find({price:{$ne:8.75}}).count();
+17
+admin> db.admin.find().count();
+18
+admin> db.admin.find({price:{$gt:2}})
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin>
+
+admin>
+
+admin> db.admin.find({price:{$gt:7.75}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({price:{gte:10.99}});
+
+admin>  db.admin.find({price:{$gte:10.99}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  }
+]
+admin> db.admin.find({price:{$gte:2.00}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({price:{$lte:10.99}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({price:{$lte:10.99}}).count();
+3
+admin> db.admin.find({price:{$in:[10.99,5.49]}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  }
+]
+admin> db.admin.find({price:{$in:[10.99]}});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({price:{$in:[]}});
+
+admin>
+
+admin> admin> db.admin.find({price:{$in:[12]}});
+ReferenceError: admin is not defined
+admin>  db.admin.find({price:{$in:[12]}});
+
+admin>  db.admin.find({price:{$nin:[12]}});
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' },
+  {
+    _id: ObjectId("64f16f73a63c730aa5e2f009"),
+    name: 'rahul',
+    age: 22,
+    type: 'backend role'
+  },
+  {
+    _id: ObjectId("64f17010a63c730aa5e2f00a"),
+    userId: 'ajaysahoo1237Agmail.com',
+    password: '1234'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({$and:[{price:8.75},{name:"Product D"}]};
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:54)
+
+> 1 | db.admin.find({$and:[{price:8.75},{name:"Product D"}]};
+    |                                                       ^
+  2 |
+
+admin> db.admin.find({$and:[{price:8.75},{name:"Product D"}]});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({$and:[{price:8.75},{name:"Product A"}]});
+
+admin> db.admin.find({price:8.75},{name:"Product A"});
+[ { _id: ObjectId("64f17506a63c730aa5e2f00e"), name: 'Product A' } ]
+admin>  db.admin.find({price:8.75},{name:"Product D"});
+[ { _id: ObjectId("64f17506a63c730aa5e2f00e"), name: 'Product D' } ]
+admin> db.admin.find({$or:[{price:{$gt:8.75},{name:"Product A"}}]});
+Uncaught:
+SyntaxError: Unexpected token (1:38)
+
+> 1 | db.admin.find({$or:[{price:{$gt:8.75},{name:"Product A"}}]});
+    |                                       ^
+  2 |
+
+admin>  db.admin.find({$or:[{price:{$gt:8.75}},{name:"Product A"}]});
+[
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  }
+]
+admin> db,admin.find({price:{$not:{$eq:8.75}}});
+ReferenceError: admin is not defined
+admin>  db.admin.find({price:{$not:{$eq:8.75}}});
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' },
+  {
+    _id: ObjectId("64f16f73a63c730aa5e2f009"),
+    name: 'rahul',
+    age: 22,
+    type: 'backend role'
+  },
+  {
+    _id: ObjectId("64f17010a63c730aa5e2f00a"),
+    userId: 'ajaysahoo1237Agmail.com',
+    password: '1234'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00b"),
+    name: 'Product A',
+    price: 10.99,
+    type: 'Type X'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00c"),
+    name: 'Product B',
+    price: 19.99,
+    type: 'Type Y'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  }
+]
+admin>  db,admin.find({price:{$not:{$eq:8.75}}}).count();
+ReferenceError: admin is not defined
+admin>  db.admin.find({price:{$not:{$eq:8.75}}}).count();
+17
+admin> db.admin.find({price:{$not:{gt:10.75}}});
+MongoServerError: unknown operator: gt
+admin> db.admin.find({price:{$not:{$gt:10.75}}});
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' },
+  {
+    _id: ObjectId("64f16f73a63c730aa5e2f009"),
+    name: 'rahul',
+    age: 22,
+    type: 'backend role'
+  },
+  {
+    _id: ObjectId("64f17010a63c730aa5e2f00a"),
+    userId: 'ajaysahoo1237Agmail.com',
+    password: '1234'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00e"),
+    name: 'Product D',
+    price: 8.75,
+    type: 'Type X'
+  }
+]
+admin> db.admin.find({$nor:[price:{$gt:7}},{name:"Product A"}]});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:26)
+
+> 1 | db.admin.find({$nor:[price:{$gt:7}},{name:"Product A"}]});
+    |                           ^
+  2 |
+
+admin> db.admin.find({$nor:[{price:{$gt:7}},{name:"Product A"}]});
+[
+  { _id: ObjectId("64b11467f7e2ce968bee2ad9"), name: 'rohit' },
+  { _id: ObjectId("64b11467f7e2ce968bee2ada"), name: 'divya' },
+  { _id: ObjectId("64ec4032f49eba5f2e07477d"), name: 'Kapil' },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477e"),
+    name: 'santosh',
+    age: 22
+  },
+  {
+    _id: ObjectId("64ec4079f49eba5f2e07477f"),
+    name: 'vishal',
+    age: 24,
+    type: 'student'
+  },
+  { _id: ObjectId("64f0205feb57c27d0776a31e"), name: 'sunil' },
+  { _id: ObjectId("64f022017a4ee371ddb1b260") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b261") },
+  { _id: ObjectId("64f0224b7a4ee371ddb1b262") },
+  { _id: ObjectId("64f0b010acef083195ee0163"), name: 'viral' },
+  { _id: ObjectId("64f0b043acef083195ee0164"), name: 'ketan' },
+  { _id: ObjectId("64f0b09bacef083195ee0167"), name: 'Anilji' },
+  {
+    _id: ObjectId("64f16f73a63c730aa5e2f009"),
+    name: 'rahul',
+    age: 22,
+    type: 'backend role'
+  },
+  {
+    _id: ObjectId("64f17010a63c730aa5e2f00a"),
+    userId: 'ajaysahoo1237Agmail.com',
+    password: '1234'
+  },
+  {
+    _id: ObjectId("64f17506a63c730aa5e2f00d"),
+    name: 'Product C',
+    price: 5.49,
+    type: 'Type Z'
+  }
+]
+admin> db.admin.find({$nor:[price:{$gt:7}},{name:"Product A"}]}).count();
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:26)
+
+> 1 | db.admin.find({$nor:[price:{$gt:7}},{name:"Product A"}]}).count();
+    |                           ^
+  2 |
+
+admin>  db.admin.find({$nor:[{price:{$gt:7}},{name:"Product A"}]}).count();
+15
+admin>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
